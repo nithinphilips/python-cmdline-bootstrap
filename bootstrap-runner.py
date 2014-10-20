@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# PYTHON_ARGCOMPLETE_OK
 
 
 """Convenience wrapper for running bootstrap directly from source tree."""
