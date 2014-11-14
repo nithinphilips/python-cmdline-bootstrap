@@ -25,6 +25,10 @@ setup(
     entry_points = {
         "console_scripts": ['bootstrap = bootstrap.bootstrap:main']
         },
+    install_requires = [
+        "argh",
+        "argcomplete",
+    ],
     version = version,
     description = "Python command line application bare bones template.",
     long_description = long_descr,
