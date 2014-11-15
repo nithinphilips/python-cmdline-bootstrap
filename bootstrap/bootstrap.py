@@ -4,20 +4,42 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.2.0"
+__version__ = "0.1.0"
 
-
-import sys
-import logging
-from argh import *
 import argcomplete
+import argparse
+import logging
+import sys
+
+from argh import ArghParser, completion, arg
+
 from .stuff import Stuff
+
+# These arguments are used by this global dispatcher and each individual
+# stand-alone commands.
+COMMON_PARSER = argparse.ArgumentParser(add_help=False)
+COMMON_PARSER.add_argument('--debug',
+                           action='store_true',
+                           default=False,
+                           help="Enable debug logging.")
 
 def main():
     parser = ArghParser()
-    parser.add_commands([ting])
-    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s: %(message)s')
+    parser.add_commands(
+        [
+            ting
+        ]
+    )
     completion.autocomplete(parser)
+
+    # Parse ahead
+    args = parser.parse_args()
+    if args.debug:
+        logging.basicConfig(
+            level=logging.DEBUG,
+            format='%(asctime)s %(levelname)s: %(message)s'
+        )
+
     parser.dispatch()
 
 # adding help to `foo` which is in the function signature:
