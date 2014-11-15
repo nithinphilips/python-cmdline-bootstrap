@@ -24,7 +24,7 @@ COMMON_PARSER.add_argument('--debug',
                            help="Enable debug logging.")
 
 def main():
-    parser = ArghParser()
+    parser = ArghParser(parents=[COMMON_PARSER])
     parser.add_commands(
         [
             ting
@@ -49,6 +49,7 @@ def main():
 @arg('-q', '--quux')
 # the function itself:
 def ting(foo, bar=1, *args, **kwargs):
+    logging.info("You turned on --debug")
     yield foo
     yield bar
     yield ', '.join(args)
