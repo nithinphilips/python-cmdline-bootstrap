@@ -8,6 +8,39 @@ Please have a look at the corresponding article:
 http://gehrcke.de/2014/02/distributing-a-python-command-line-application/
 
 
+configargparse
+--------------
+This branch uses the `configargparse
+<https://github.com/zorro3/ConfigArgParse>`_ library instead of vanilla
+argparse
+
+This allows argument values to be specified using environment variables or
+configuration files. configargparse does not currently support reading
+configuration values for subparsers.
+
+Environment variable:
+
+The ``--debug`` flag is tied to the ``BOOTSTRAP_DEBUG`` environment variable,
+so you can::
+
+    $ BOOTSTRAP_DEBUG=True python bootstrap-runner.py foo
+    2014-11-16 00:06:06,959 INFO: You turned on --debug
+    foo
+    None
+
+Any optional arguments can be specified in a config file as well::
+
+    $ cat ~/.bootstrap
+    bar=barsoap
+
+Then you can::
+
+    $python bootstrap-runner.py foo
+    foo
+    barsoap
+
+The ``barsoap`` value was read from ``~/.bootstrap``.
+
 Usage
 -----
 
