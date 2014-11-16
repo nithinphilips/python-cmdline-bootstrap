@@ -28,6 +28,7 @@ setup(
     install_requires = [
         "argh",
         "argcomplete",
+        "configargparse"
     ],
     version = version,
     description = "Python command line application bare bones template.",
