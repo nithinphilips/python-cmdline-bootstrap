@@ -26,7 +26,7 @@ with open("README.rst", "rb") as f:
 setup(
     name = "cmdline-bootstrap",
     packages = ["bootstrap"],
-    package_data={'naiads': ['data/*.xml']},
+    package_data={'bootstrap': ['data/*.xml']},
     entry_points = {
         "console_scripts": ['bootstrap = bootstrap.bootstrap:main']
         },
