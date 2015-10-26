@@ -1,6 +1,5 @@
 python-cmdline-bootstrap
 ========================
-
 This is a structure template for Python command line applications, ready to be
 released and distributed via setuptools/PyPI/pip for Python 2 and 3.
 
@@ -10,13 +9,25 @@ http://gehrcke.de/2014/02/distributing-a-python-command-line-application/
 
 Usage
 -----
-
 Clone this repository and adopt the bootstrap structure for your own project.
 This is just a starting point, but I hope a good one. From there on, you should
 read and follow http://python-packaging-user-guide.readthedocs.org/en/latest/,
 the definite resource on Python packaging.
 
+Rename files
+~~~~~~~~~~~~
 
+In bash::
+
+    PROJECT=naiads
+    cd python-cmdline-bootstrap/
+
+    cd bootstrap
+    rename bootstrap ${PROJECT} *
+    cd ..
+    rename bootstrap ${PROJECT} *
+
+    find . -type f -print0 | xargs -0 sed -i -e "s/bootstrap/${PROJECT}/g"
 
 Behavior
 --------
