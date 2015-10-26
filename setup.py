@@ -5,8 +5,12 @@
 
 
 import re
+import pip
 from setuptools import setup
 
+# Load requirements list from 'requirements.txt'
+install_reqs = pip.req.parse_requirements("requirements.txt", session=pip.download.PipSession())
+reqs = [str(ir.req) for ir in install_reqs]
 
 version = re.search(
     '^__version__\s*=\s*"(.*)"',
@@ -22,17 +26,15 @@ with open("README.rst", "rb") as f:
 setup(
     name = "cmdline-bootstrap",
     packages = ["bootstrap"],
+    package_data={'naiads': ['data/*.xml']},
     entry_points = {
         "console_scripts": ['bootstrap = bootstrap.bootstrap:main']
         },
-    install_requires = [
-        "argh",
-        "argcomplete",
-    ],
+    install_requires = reqs,
     version = version,
     description = "Python command line application bare bones template.",
     long_description = long_descr,
-    author = "Jan-Philip Gehrcke",
-    author_email = "jgehrcke@googlemail.com",
+    author = "Jan-Philip Gehrcke,Nithin Philips",
+    author_email = "jgehrcke@googlemail.com,nithin@nithinphilips.com",
     url = "http://gehrcke.de/2014/02/distributing-a-python-command-line-application",
     )
