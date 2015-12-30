@@ -27,7 +27,7 @@ In bash::
     cd ..
     rename bootstrap ${PROJECT} *
 
-    find . -type f -print0 | xargs -0 sed -i -e "s/bootstrap/${PROJECT}/g"
+    find . -type f -not -path "./.git*" -print0 | xargs -0 sed -i -e "s/bootstrap/${PROJECT}/g"
 
 Behavior
 --------
