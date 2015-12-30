@@ -48,11 +48,10 @@ clean:
 	rm -rf *.spec *.egg-info/ build/
 	rm -f README.docx ChangeLog.docx
 	VERSION=$(VERSION) $(MAKE) -C windows clean
-	$(PYTHON) ./dev/py3clean .
+	find . | grep -E '(__pycache__|\.pyc|\.pyo)' | xargs rm -rf
 
 distclean: clean
 	rm -rf $(DISTROOT)
-
 
 test:
 	$(NOSETESTS)

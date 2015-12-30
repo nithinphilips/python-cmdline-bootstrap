@@ -2,7 +2,7 @@ import re
 
 version = re.search(
     '^__version__\s*=\s*"(.*)"',
-    open('axiom/axiom.py').read(),
+    open('bootstrap/bootstrap.py').read(),
     re.M
     ).group(1)
 
